@@ -1,17 +1,19 @@
-import React from "react";
+import useFetch from "./hooks/useFetch";
 
 const BASE_URL = "http://localhost:3001/products";
 
 function App() {
-  const [products, setProducts] = React.useState([]);
+  const products = useFetch(BASE_URL);
 
-  React.useEffect(() => {
-    fetch(BASE_URL)
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
-
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <ul className="container mx-auto mt-8 flex flex-col items-center justify-center">
+      {products.map((product) => (
+        <li key={product.id}>
+          {product.name} - {product.price}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default App;
