@@ -32,7 +32,7 @@ export default function SearchBar({
       >
         <option value="all">All</option>
         {categories.map((category) => (
-          <option key={category} value={category}>
+          <option key={category} value={category.toLowerCase()}>
             {category}
           </option>
         ))}

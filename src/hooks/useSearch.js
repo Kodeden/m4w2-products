@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function useSearch(products) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchCat, setSearchCat] = useState("All");
+  const [searchCat, setSearchCat] = useState("all");
   const [isInStockOnly, setIsInStockOnly] = useState(false);
 
   let filteredProducts = products;
@@ -13,13 +13,9 @@ export default function useSearch(products) {
     );
   }
 
-  if (
-    searchCat !==
-    // value is lowercase
-    "All".toLowerCase()
-  ) {
+  if (searchCat && searchCat !== "all") {
     filteredProducts = filteredProducts.filter(
-      (product) => product.category === searchCat
+      (product) => product.category.toLowerCase() === searchCat
     );
   }
 
