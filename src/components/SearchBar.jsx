@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { InputCheckBox, InputSearch, Select } from "./Form";
 
 export default function SearchBar({
   categories,
@@ -8,46 +9,30 @@ export default function SearchBar({
 }) {
   return (
     <form className="my-4 flex flex-col items-center gap-y-4">
-      <label htmlFor="search" className="sr-only">
-        Search
-      </label>
-      <input
-        type="search"
+      <InputSearch
         id="search"
-        placeholder="🔍 Search"
-        className="rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+        label="Search"
         onChange={(e) => {
           setSearchTerm(e.target.value);
         }}
       />
 
-      <label htmlFor="category" className="sr-only">
-        Category
-      </label>
-      <select
+      <Select
         id="category"
+        label="Category"
+        options={categories}
         onChange={(e) => {
           setSearchCat(e.target.value);
         }}
-      >
-        <option value="all">All</option>
-        {categories.map((category) => (
-          <option key={category} value={category.toLowerCase()}>
-            {category}
-          </option>
-        ))}
-      </select>
+      />
 
-      <div className="flex items-center gap-x-2">
-        <input
-          type="checkbox"
-          id="in-stock-only"
-          onChange={() => {
-            setIsInStockOnly((prev) => !prev);
-          }}
-        />
-        <label htmlFor="in-stock-only">Only show products in stock</label>
-      </div>
+      <InputCheckBox
+        id="in-stock-only"
+        label="Only show products in stock"
+        onChange={() => {
+          setIsInStockOnly((prev) => !prev);
+        }}
+      />
     </form>
   );
 }
