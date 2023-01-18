@@ -6,6 +6,7 @@
   "scripts": {
     "build": "vite build",
     "preview": "vite preview",
+    "dep-graph": "depcruise --exclude \"^node_modules\" --output-type dot src | dot -T svg > dependency-graph.svg",
     "start": "vite",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
