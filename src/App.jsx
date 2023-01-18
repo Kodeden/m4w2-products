@@ -1,3 +1,4 @@
+import ProductList from "./components/ProductList/ProductList";
 import SearchBar from "./components/SearchBar";
 import useFetch from "./hooks/useFetch";
 import useSearch from "./hooks/useSearch";
@@ -18,13 +19,7 @@ function App() {
         setSearchCat={setSearchCat}
         setIsInStockOnly={setIsInStockOnly}
       />
-      <ul className="container mx-auto mt-8 flex flex-col items-center justify-center">
-        {filteredProducts.map((product) => (
-          <li key={product.name} className="border-y py-2">
-            {product.name} - {product.price}
-          </li>
-        ))}
-      </ul>
+      <ProductList products={filteredProducts} />
     </>
   );
 }
