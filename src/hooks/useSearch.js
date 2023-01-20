@@ -15,7 +15,7 @@ export default function useSearch(products) {
 
   if (searchCat && searchCat !== "all") {
     filteredProducts = filteredProducts.filter(
-      (product) => product.category.toLowerCase() === searchCat
+      (product) => product.category === searchCat
     );
   }
 

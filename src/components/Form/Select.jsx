@@ -9,7 +9,7 @@ export default function Select({ id, label, options, onChange }) {
       <select id={id} onChange={onChange}>
         <option value="all">All</option>
         {options.map((option) => (
-          <option key={option} value={option.toLowerCase()}>
+          <option key={option} value={option}>
             {option}
           </option>
         ))}
